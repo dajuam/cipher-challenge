@@ -2,16 +2,18 @@
 
 namespace ChallengeBundle\Service;
 
-use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use ChallengeBundle\Type\EncryptionType;
+use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
 /**
  * @author Juan Pablo Martinez
  */
-class ChallengeService extends ContainerAware
+class ChallengeService
 {
+    use ContainerAwareTrait;
+
     // Master pattern
     const ALPHABETICAL_VALUES = array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
 
