@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Cipher Challenge: Juan Pablo Martinez</title>
+<link href="{{ asset('bundles/challenge/assets/bower_components/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ asset('bundles/challenge/assets/custom/custom.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Cipher Challenge</h1>
+            <p class="lead">Please, use the uploaders below to decrypt the files.</p>
+            <div class="row">
+                <div class="col-lg-6">
+                    {{ form_start(form_soft) }}
+                    <div class="form-group">
+                        {{ form_label(form_soft.SoftEncrypted) }}
+                        {{ form_widget(form_soft.SoftEncrypted, {'attr': {'class': 'form-control-file'}}) }}
+                    </div>
+                    {{ form_widget(form_soft.SaveSoft) }}
+                    {{ form_end(form_soft) }}
+                </div>
+                <div class="col-lg-6">
+                    {{ form_start(form_hard) }}
+                    <div class="form-group">
+                        {{ form_label(form_hard.HardEncrypted) }}
+                        {{ form_widget(form_hard.HardEncrypted, {'attr': {'class': 'form-control-file'}}) }}
+                    </div>
+                    {{ form_widget(form_hard.SaveHard) }}
+                    {{ form_end(form_hard) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

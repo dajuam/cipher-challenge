@@ -1,0 +1,3 @@
+services:
+    challenge.service:
+        class:     ChallengeBundle\Service\ChallengeService
