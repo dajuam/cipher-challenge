@@ -22,18 +22,19 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         $formSoft = $this->get('form.factory')->createNamedBuilder('soft')
-            ->add('SoftEncrypted', FileType::class, array('label' => 'Soft Encrypted (encrypted.txt)','required' => false))
+            ->add('Plain', FileType::class, array('label' => 'Plain (plain.txt)','required' => true))
+            ->add('SoftEncrypted', FileType::class, array('label' => 'Soft Encrypted (encrypted.txt)','required' => true))
             ->add('SaveSoft', SubmitType::class, array('label' => 'Generate file', 'attr' => array('class' => 'btn btn-primary')))
         ->getForm();
         $formHard = $this->get('form.factory')->createNamedBuilder('hard')
-            ->add('HardEncrypted', FileType::class, array('label' => 'Hard Encrypted (encrypted_hard.txt)','required' => false))
+            ->add('HardEncrypted', FileType::class, array('label' => 'Hard Encrypted (encrypted_hard.txt)','required' => true))
             ->add('SaveHard', SubmitType::class, array('label' => 'Generate file', 'attr' => array('class' => 'btn btn-primary')))
         ->getForm();
         if ($request->isMethod('POST')) {
             $cs = $this->get('challenge.service');
             $formSoft->handleRequest($request);
             $formHard->handleRequest($request);
-            if ($formSoft->isSubmitted() && $formSoft->getData()[EncryptionType::SOFT_ENCRYPTED] != null) {
+            if ($formSoft->isSubmitted() && $formSoft->getData()[EncryptionType::SOFT_ENCRYPTED] != null && $formSoft->isValid()) {
                 return $cs->genericDecryp($formSoft->getData(), EncryptionType::SOFT_ENCRYPTED);
             }
             if ($formHard->isSubmitted() && $formHard->getData()[EncryptionType::HARD_ENCRYPTED] != null) 
