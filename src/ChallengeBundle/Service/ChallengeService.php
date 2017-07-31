@@ -82,7 +82,6 @@ class ChallengeService
     }
 
     public function softDecryptTextFromSource($subject, $source) {
-        //$pattern = array('Z', 'Y', 'X', 'W', 'F', 'V', 'U', 'B', 'C', 'T', 'S', 'R', 'D', 'E', 'Q', 'P', 'O', 'N', 'M', 'L', 'K', 'J', 'I', 'H', 'G', 'A');
         return $this->decryptCoreV2($subject, $source);
     }
 
